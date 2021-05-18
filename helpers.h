@@ -8,8 +8,8 @@ struct FUNC{
     char *type;
     char *name;
     struct VAR **parameters;
-    int func_start;
-    int offset;
+    int func_start[2];
+    int offset[2];
 };
 struct USER_DEFINED{
     char type_name;
