@@ -160,11 +160,11 @@ int flag_code(char *filename, int line_number, char* error, char *code){
 
     char *line = malloc(100*sizeof(char));
     fseek(flagged_code, 0, SEEK_END);
+    fputs("\n", flagged_code);
     sprintf(line, "[%s] [line: %d] [%s]\n", filename, line_number, error);
     fputs(line, flagged_code);
-    fputc('"', flagged_code);
     fputs(code, flagged_code);
-    fputc('"', flagged_code);
+    fputs("\n", flagged_code);
     free(line);
     return 1;
 }

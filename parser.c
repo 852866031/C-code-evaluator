@@ -160,6 +160,7 @@ char **filenames_parser(int *file_num, char **arguments, int argc, int index){
 
 int help_command(){
     // ---------------------------------------------------
+    // Programmer: Yuyan Chen
     // Created : 5/11/2021
     // Purpose:
     // the help command
@@ -167,7 +168,36 @@ int help_command(){
     // Parameters : NULL
     // Returns : 1 for normal
     // Side-effects : NULL
-
-    printf("\nThis is the help command, put description later here\n\n");
+    
+    printf("\nC code evaluator version 1.0\n"
+    "NAME\n"
+    "\t ceval -- evaluate the professional quality of the source code\n"
+    "SYNOPSIS\n"
+    "\t ceval [-help | -ssf | -nodoc | -notest | -novars] [file ...]\n"
+    "DESCRIPTION\n"
+    "\t This is a C application that evaluates the professional quality of the source code in the following areas:\n "
+    "\t\t Modular programming\n"
+    "\t\t Code indentation\n"
+    "\t\t Commenting\n"
+    "\t\t Documentation\n"
+    "\t\t Poor variable names\n"
+    "\t\t Built-in test cases\n"
+    "\t The options are as follows:\n"
+    "\t\t -ssf Single Source File\n"
+    "\t\t -nodoc No Documentation in the file\n"
+    "\t\t -notest No Test cases\n"
+    "\t\t -novars No Variables testing\n"
+    "USAGE\n"
+    "\t ceval -ssf filename1.c filename2.c ... filename.c\n"
+    "\t ceval -ssf *.c\n"
+    "\t ceval -nodoc filename1.c filename2.c ... filenameN.c\n"
+    "\t ceval -nodoc *.c\n"
+    "\t ceval -notest filename1.c filename2.c ... filenameN.c\n"
+    "\t ceval -notest *.c\n"
+    "\t ceval -novars filename1.c filename2.c ... filenameN.c\n"
+    "\t ceval -novars *.c\n"
+    "\t ceval -ssf -nodoc -notest -novars filename1.c filename2.c ... filenameN.c\n"
+    "\t ceval -ssf -nodoc -notest -novars *.c\n"""
+    );
     return 1;
 }

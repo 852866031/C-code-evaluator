@@ -1,7 +1,7 @@
 // Programmer : Jiaxuan Chen
 // Created : Jiaxuan Chen at 5/11/2021
 // Purpose:
-// The main program
+// The main program and the error handler
 //
 // Modifications:
 // Initial Date Short Description 
@@ -32,6 +32,9 @@ int error_dealer(int code){
     printf("Error code is %d\n", code);
     if(code==-1){
         printf("Input is not valid\n");
+    }
+    else if(code==-2){
+        printf("File not exists");
     }
     exit(code);
 }
