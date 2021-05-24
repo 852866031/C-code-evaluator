@@ -13,6 +13,69 @@
 #include"output.h"
 #include"main.h"
 #include"helpers.h"
+char **tokenize_doc(char *string);
+int is_in_list(char *string, char **list, int length);
+int rate_head_doc(char *filename);
+
+
+
+
+
+int rate_doc(char **filenames, int file_num){
+    // ---------------------------------------------------
+    // Created : 
+    // Purpose:
+    // 
+    //
+    // Parameters : 
+    // Returns : 
+    // Side-effects : 
+
+
+    /*after you finish evaluate the files
+    rememeber to use function fill_doc_summary to record the summary of your evaluation
+    and use flag_code to flag the improper code
+    these two functions are in output.c, check them out! 
+    and modify it if you want!*/
+    printf("rate_doc called\n");
+    int num=0;
+    int hits=0;
+    for(int i=0; i<file_num; i++){
+        num+=4;
+        hits+=rate_head_doc(filenames[i]);
+    }
+    fill_doc_summary(hits, num);
+    return 1;
+}
+
+char **tokenize_doc(char *string) {
+    char **tokens;
+    char buffer[1000];
+    int c=0, b=0, t=0;
+    while(string[c]!=0){
+        while(string[c]==' ' || string[c]=='\n' || string[c]==':') c++;
+        if(string[c]==0) break;
+        while(string[c]!=' ' && string[c]!=0 && string[c]!='\n') c++;
+        t++;
+    }
+    tokens=malloc(sizeof(char *)*(t));
+    c=0, t=0;
+    while(string[c]!=0){
+        while(string[c]==' ' || string[c]=='\n' || string[c]==':') c++;
+        if(string[c]==0) break;
+        b=0;
+        while(string[c]!=' ' && string[c]!=0 && string[c]!='\n') {
+            buffer[b]=string[c];
+            b++;
+            c++;
+        }
+        buffer[b]=0;
+        tokens[t]=strdup(buffer);
+        t++;
+    }
+    tokens[t]=NULL;
+    return tokens;
+}
 
 int is_in_list(char *string, char **list, int length){
     char *sub;
@@ -74,7 +137,7 @@ int rate_head_doc(char *filename){
 
     sub = strstr(comment, "Programmer");
     if(sub!=NULL){
-        tokens=tokenize(sub);
+        tokens=tokenize_doc(sub);
         counter=0;
         index=1;
         while(tokens[index]!=NULL && is_in_list(tokens[index], list, 4)!=1){
@@ -90,7 +153,7 @@ int rate_head_doc(char *filename){
 
     sub = strstr(comment, "Created");
     if(sub!=NULL){
-        tokens=tokenize(sub);
+        tokens=tokenize_doc(sub);
         counter=0;
         index=1;
         while(tokens[index]!=NULL && is_in_list(tokens[index], list, 4)!=1){
@@ -106,7 +169,7 @@ int rate_head_doc(char *filename){
     
     sub = strstr(comment, "Purpose");
     if(sub!=NULL){
-        tokens=tokenize(sub);
+        tokens=tokenize_doc(sub);
         counter=0;
         index=1;
         while(tokens[index]!=NULL && is_in_list(tokens[index], list, 4)!=1){
@@ -123,7 +186,7 @@ int rate_head_doc(char *filename){
 
     sub = strstr(comment, "Modifications");
     if(sub!=NULL){
-        tokens=tokenize(sub);
+        tokens=tokenize_doc(sub);
         counter=0;
         index=1;
         while(tokens[index]!=NULL && is_in_list(tokens[index], list, 4)!=1){
@@ -142,32 +205,4 @@ int rate_head_doc(char *filename){
     free(comment);
     fclose(fi);
     return grade;
-}
-
-
-int rate_doc(char **filenames, int file_num){
-    // ---------------------------------------------------
-    // Created : 
-    // Purpose:
-    // 
-    //
-    // Parameters : 
-    // Returns : 
-    // Side-effects : 
-
-
-    /*after you finish evaluate the files
-    rememeber to use function fill_doc_summary to record the summary of your evaluation
-    and use flag_code to flag the improper code
-    these two functions are in output.c, check them out! 
-    and modify it if you want!*/
-    printf("rate_doc called\n");
-    int num=0;
-    int hits=0;
-    for(int i=0; i<file_num; i++){
-        num+=4;
-        hits+=rate_head_doc(filenames[i]);
-    }
-    fill_doc_summary(hits, num);
-    return 1;
 }
