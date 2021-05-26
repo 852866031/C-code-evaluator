@@ -11,4 +11,6 @@ struct USER_DEFINED{
     struct VAR **parameters;
 };
 int at_line(FILE *f);
+char fgetc_plus(FILE *fp);
+struct FUNC *get_next_function(FILE *fp);
 #endif

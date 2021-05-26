@@ -73,7 +73,7 @@ char fgetc_plus(FILE *fp){
         int offset = 0;
         brackets += 1;
         while(1){
-            temp = fgetc(fp);
+            temp = fgetc_plus(fp);
             if (temp == '{') brackets ++;
             if (temp == '}') brackets --;
             if (brackets == 0){
@@ -349,15 +349,16 @@ struct FUNC *get_next_function(FILE *fp){
         while(buffer[tmp]!=' ' && tmp>=0) tmp--;
         tmp++;
         if(tmp<0) continue;
+        while(buffer[tmp]=='*') tmp++;
         while(buffer[tmp]!='(' && buffer[tmp]!=' ') name[index3++]=buffer[tmp++];
         name[index3]='\0';
         break;
     }
     struct FUNC *func=malloc(sizeof(struct FUNC));
-    func->func_start=start;
+    func->func_start=start+1;
     fseek(fp, start, SEEK_SET);
     fgetc_plus(fp);
-    func->offset=ftell(fp)-start+1;
+    func->offset=ftell(fp)-start;
     func->name=strdup(name);
     if(empty_para) func->parameters=NULL;
     else{

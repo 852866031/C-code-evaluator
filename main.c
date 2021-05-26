@@ -21,7 +21,7 @@
 
 int error_dealer(int code){
     // ---------------------------------------------------
-    // Created : 5/11/2021
+    // Created : at 5/11/2021 
     // Purpose:
     // handles all kind of error code
     //
@@ -41,8 +41,8 @@ int error_dealer(int code){
 
 int main(int argc, char *argv[]){
     // ---------------------------------------------------
-    // Created : 5/11/2021
-    // Purpose: main
+    // Created : at 5/11/2021
+    // Purpose: main function of the whole program
     // Parameters : command line arguments
     // Returns : 0
     // Side-effects : this program starts running, bugs might happen, so good luck everyone!

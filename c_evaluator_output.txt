@@ -1,0 +1,30 @@
+Ceval version 1.0
+---= Code Evaluator Summary =---
+Commenting rating:              [2]/[2] hits = [100.00%]
+Documentation rating:           [5]/[15] hits = [33.33%]
+---= Flagged Code =---
+
+[rate_comment.c] [line: 10] [Programmer tokens not sufficient, 1 hit missed]
+-The documentation section-
+
+
+[rate_comment.c] [line: 10] [Created tokens not sufficient, 1 hit missed]
+-The documentation section-
+
+
+[rate_comment.c] [line: 10] [Purpose tokens not sufficient, 1 hit missed]
+-The documentation section-
+
+
+[rate_comment.c] [line: 18] [Created tokens not sufficient, 1 hit missed]
+Function: rate_comment (char **filenames, int file_num)
+
+
+[rate_comment.c] [line: 18] [Purpose tokens not sufficient, 1 hit missed]
+Function: rate_comment (char **filenames, int file_num)
+
+
+[rate_comment.c] [line: 48] [No documentation for this function, 5 hits missed]
+Function: one_comment_per_func (char *filename)
+
+--= ceval END =--
